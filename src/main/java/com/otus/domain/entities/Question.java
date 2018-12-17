@@ -2,14 +2,24 @@ package com.otus.domain.entities;
 
 public class Question {
 
+    private Integer id;
     private String question;
     private String answer;
 
     public Question() { }
 
-    public Question(String question, String answer) {
+    public Question(Integer id, String question, String answer) {
+        this.id = id;
         this.question = question;
         this.answer = answer;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getQuestion() {

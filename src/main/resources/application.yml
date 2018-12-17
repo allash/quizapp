@@ -10,3 +10,5 @@ management:
       exposure:
         include: info, health, beans
 
+language-tag: en-US
+

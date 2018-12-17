@@ -1,10 +1,10 @@
-package com.otus.domain.entities;
+package com.otus.app.quiz.dto.response;
 
-public class QuizResult {
+public class DtoQuizResultResponse {
     private int correctAnswerCount;
     private int invalidAnswerCount;
 
-    public QuizResult(int correctAnswerCount, int invalidAnswerCount) {
+    public DtoQuizResultResponse(int correctAnswerCount, int invalidAnswerCount) {
         this.correctAnswerCount = correctAnswerCount;
         this.invalidAnswerCount = invalidAnswerCount;
     }
