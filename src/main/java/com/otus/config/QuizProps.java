@@ -1,13 +1,11 @@
 package com.otus.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
 @ConfigurationProperties
-@Component
-public class AppProps {
+public class QuizProps {
 
     private String languageTag;
 

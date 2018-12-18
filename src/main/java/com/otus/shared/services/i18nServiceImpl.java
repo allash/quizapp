@@ -1,6 +1,6 @@
 package com.otus.shared.services;
 
-import com.otus.config.AppProps;
+import com.otus.config.QuizProps;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 public class i18nServiceImpl implements i18nService {
 
     private MessageSource messageSource;
-    private AppProps appProps;
+    private QuizProps appProps;
 
-    public i18nServiceImpl(MessageSource messageSource, AppProps appProps) {
+    public i18nServiceImpl(MessageSource messageSource, QuizProps appProps) {
         this.messageSource = messageSource;
         this.appProps = appProps;
     }

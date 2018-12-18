@@ -28,6 +28,6 @@ public class StudentController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public DtoStudentResponse createStudent(@Valid @RequestBody DtoCreateStudentRequest student) {
-        return studentService.createStudent(student.firstName, student.lastName);
+        return studentService.createStudent(student.getFirstName(), student.getLastName());
     }
 }

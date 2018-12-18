@@ -8,4 +8,5 @@ public interface QuizRepository {
 
     void saveAnswer(Question question, String answer);
     Map<Question, String> findAnswers();
+    void deleteAll();
 }
