@@ -1,4 +1,4 @@
-package com.otus.domain.helpers;
+package com.otus.shared.services;
 
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
@@ -6,16 +6,16 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
-@Component
-public class CsvHelper {
+@Service
+public class CsvServiceImpl implements CsvService {
 
-    private final Logger logger = LoggerFactory.getLogger(CsvHelper.class);
+    private final Logger logger = LoggerFactory.getLogger(CsvServiceImpl.class);
 
     public <T> List<T> readCsv(Class<T> type, String fileName) {
 

@@ -1,12 +1,22 @@
 package com.otus.domain.entities;
 
 public class Student {
+    private Integer id;
     private String firstName;
     private String lastName;
 
-    public Student(String firstName, String lastName) {
+    public Student(Integer id, String firstName, String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -23,5 +33,9 @@ public class Student {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
     }
 }

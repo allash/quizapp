@@ -22,12 +22,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<DtoStudentResponse> getAllStudents() {
-        List<Student> students = studentRepository.getAllStudents();
+        List<Student> students = studentRepository.findAll();
         return studentMapper.toDtoList(students);
     }
 
     public DtoStudentResponse createStudent(String firstName, String lastName) {
-        Student student = studentRepository.createStudent(firstName, lastName);
+        Student student = studentRepository.save(firstName, lastName);
         return studentMapper.toDto(student);
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 public class StudentMapper {
 
     public DtoStudentResponse toDto(Student student) {
-        return new DtoStudentResponse(student.getFirstName(), student.getLastName());
+        return new DtoStudentResponse(student.getId(), student.getFirstName(), student.getLastName());
     }
 
     public List<DtoStudentResponse> toDtoList(List<Student> students) {

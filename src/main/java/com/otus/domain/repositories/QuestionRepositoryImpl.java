@@ -4,26 +4,27 @@ import com.otus.domain.entities.Question;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class QuestionRepositoryImpl implements QuestionRepository {
 
-    private List<Question> questions = new ArrayList<>();
+    private Map<Integer, Question> questions = new HashMap<>();
 
     public List<Question> getQuestions() {
-        return questions;
+        return new ArrayList<>(questions.values());
     }
 
     @Override
     public Question getQuestionById(Integer id) {
-        for (Question question : questions) if (question.getId().equals(id)) return question;
-        return null;
+        return questions.get(id);
     }
 
     @Override
     public void save(Question question) {
-        questions.add(question);
+        questions.put(question.getId(), question);
     }
 
     @Override

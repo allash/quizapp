@@ -2,13 +2,24 @@ package com.otus.app.student.dto.response;
 
 public class DtoStudentResponse {
 
+    private Integer id;
+
     private String firstName;
 
     private String lastName;
 
-    public DtoStudentResponse(String firstName, String lastName) {
+    public DtoStudentResponse(Integer id, String firstName, String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {

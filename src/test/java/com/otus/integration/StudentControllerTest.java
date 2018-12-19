@@ -7,7 +7,6 @@ import com.otus.domain.repositories.StudentRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,15 +17,13 @@ import java.util.UUID;
 public class StudentControllerTest extends BaseSpringTest {
 
     @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Autowired
     private StudentRepository studentRepository;
 
     @Test
     public void canCreateNewStudent() {
 
-        List<Student> studentsBefore = studentRepository.getAllStudents();
+        studentRepository.clear();
+        List<Student> studentsBefore = studentRepository.findAll();
         Assertions.assertEquals(studentsBefore.size(), 0);
 
         DtoCreateStudentRequest createStudentRequest = new DtoCreateStudentRequest();
@@ -36,7 +33,7 @@ public class StudentControllerTest extends BaseSpringTest {
 
         restTemplate.exchange(createURLWithPort("/api/students"), HttpMethod.POST, httpEntity, Object.class);
 
-        List<Student> studentsAfter = studentRepository.getAllStudents();
+        List<Student> studentsAfter = studentRepository.findAll();
         Assertions.assertEquals(studentsAfter.size(), 1);
 
         Student createdStudent = studentsAfter.get(0);
