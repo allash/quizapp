@@ -4,9 +4,14 @@ logging:
 spring:
   profiles:
     active: dev
+  banner:
+    image:
+      location: banner.txt
 management:
   endpoints:
     web:
       exposure:
         include: info, health, beans
+
+language-tag: en-US
 

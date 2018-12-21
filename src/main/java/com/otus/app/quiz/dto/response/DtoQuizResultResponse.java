@@ -1,10 +1,12 @@
-package com.otus.domain.entities;
+package com.otus.app.quiz.dto.response;
 
-public class QuizResult {
+public class DtoQuizResultResponse {
+    private String fullName;
     private int correctAnswerCount;
     private int invalidAnswerCount;
 
-    public QuizResult(int correctAnswerCount, int invalidAnswerCount) {
+    public DtoQuizResultResponse(String fullName, int correctAnswerCount, int invalidAnswerCount) {
+        this.fullName = fullName;
         this.correctAnswerCount = correctAnswerCount;
         this.invalidAnswerCount = invalidAnswerCount;
     }
@@ -23,5 +25,13 @@ public class QuizResult {
 
     public void setInvalidAnswerCount(int invalidAnswerCount) {
         this.invalidAnswerCount = invalidAnswerCount;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }
