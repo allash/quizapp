@@ -9,6 +9,8 @@ import com.otus.domain.entities.Student;
 import com.otus.domain.repositories.QuestionRepository;
 import com.otus.domain.repositories.QuizRepository;
 import com.otus.domain.repositories.StudentRepository;
+import com.otus.shared.exceptions.question.QuestionNotFoundByIdException;
+import com.otus.shared.exceptions.student.StudentNotFoundByIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,13 +37,21 @@ public class QuizServiceImpl implements QuizService {
     }
 
     public void saveAnswer(Integer studentId, Integer questionId, String answer) {
+
+        Student student = studentRepository.getById(studentId);
+        if (student == null) throw new StudentNotFoundByIdException(studentId);
+
         Question question = questionRepository.getQuestionById(questionId);
-        quizRepository.saveAnswer(studentId, question, answer);
+        if (question == null) throw new QuestionNotFoundByIdException(questionId);
+        
+        quizRepository.saveAnswer(student.getId(), question, answer);
     }
 
     public DtoQuizResultResponse calculateResult(Integer studentId) {
 
         Student student = studentRepository.getById(studentId);
+        if (student == null) throw new StudentNotFoundByIdException(studentId);
+
         List<QuizQuestionAndAnswer> quizQuestionAndAnswers = quizRepository.findAnswers(studentId);
 
         int correctAnswer = 0;

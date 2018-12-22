@@ -8,6 +8,8 @@ public class DtoStudentResponse {
 
     private String lastName;
 
+    public DtoStudentResponse() { }
+
     public DtoStudentResponse(Integer id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;

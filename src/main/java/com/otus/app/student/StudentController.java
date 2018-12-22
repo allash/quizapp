@@ -25,6 +25,11 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+    @GetMapping("/{studentId}")
+    public DtoStudentResponse getStudentById(@PathVariable int studentId) {
+        return studentService.getStudentById(studentId);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public DtoStudentResponse createStudent(@Valid @RequestBody DtoCreateStudentRequest student) {

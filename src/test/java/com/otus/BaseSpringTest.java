@@ -1,5 +1,6 @@
 package com.otus;
 
+import com.otus.config.FixtureGenerator;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,9 @@ public class BaseSpringTest {
 
     @Autowired
     protected TestRestTemplate restTemplate;
+
+    @Autowired
+    protected FixtureGenerator fixtures;
 
     protected String createURLWithPort(String uri) {
         return "http://localhost:" + port + uri;

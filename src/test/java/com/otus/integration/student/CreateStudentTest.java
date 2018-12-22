@@ -1,4 +1,4 @@
-package com.otus.integration;
+package com.otus.integration.student;
 
 import com.otus.BaseSpringTest;
 import com.otus.app.student.dto.request.DtoCreateStudentRequest;
@@ -10,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.UUID;
 
-public class StudentControllerTest extends BaseSpringTest {
+public class CreateStudentTest extends BaseSpringTest {
 
     @Autowired
     private StudentRepository studentRepository;
@@ -39,5 +40,29 @@ public class StudentControllerTest extends BaseSpringTest {
         Student createdStudent = studentsAfter.get(0);
         Assertions.assertEquals(createStudentRequest.getFirstName(), createdStudent.getFirstName());
         Assertions.assertEquals(createStudentRequest.getLastName(), createdStudent.getLastName());
+    }
+
+    @Test
+    public void cannotCreateStudentWithBlankFirstName() {
+        studentRepository.clear();
+
+        DtoCreateStudentRequest createStudentRequest = new DtoCreateStudentRequest();
+        createStudentRequest.setLastName(UUID.randomUUID().toString());
+        HttpEntity httpEntity = new HttpEntity(createStudentRequest, new HttpHeaders());
+
+        HttpStatus httpStatus = restTemplate.exchange(createURLWithPort("/api/students"), HttpMethod.POST, httpEntity, Object.class).getStatusCode();
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, httpStatus);
+    }
+
+    @Test
+    public void cannotCreateStudentWithBlankLastName() {
+        studentRepository.clear();
+
+        DtoCreateStudentRequest createStudentRequest = new DtoCreateStudentRequest();
+        createStudentRequest.setFirstName(UUID.randomUUID().toString());
+        HttpEntity httpEntity = new HttpEntity(createStudentRequest, new HttpHeaders());
+
+        HttpStatus httpStatus = restTemplate.exchange(createURLWithPort("/api/students"), HttpMethod.POST, httpEntity, Object.class).getStatusCode();
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, httpStatus);
     }
 }

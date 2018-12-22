@@ -5,6 +5,8 @@ public class DtoQuizResultResponse {
     private int correctAnswerCount;
     private int invalidAnswerCount;
 
+    public DtoQuizResultResponse() { }
+
     public DtoQuizResultResponse(String fullName, int correctAnswerCount, int invalidAnswerCount) {
         this.fullName = fullName;
         this.correctAnswerCount = correctAnswerCount;

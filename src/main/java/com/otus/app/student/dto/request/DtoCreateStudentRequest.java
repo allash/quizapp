@@ -10,6 +10,13 @@ public class DtoCreateStudentRequest {
     @NotBlank
     private String lastName;
 
+    public DtoCreateStudentRequest() { }
+
+    public DtoCreateStudentRequest(@NotBlank String firstName, @NotBlank String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }

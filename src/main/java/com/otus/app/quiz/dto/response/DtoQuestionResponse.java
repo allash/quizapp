@@ -4,6 +4,8 @@ public class DtoQuestionResponse {
     private int id;
     private String question;
 
+    public DtoQuestionResponse() { }
+
     public DtoQuestionResponse(int id, String question) {
         this.id = id;
         this.question = question;
